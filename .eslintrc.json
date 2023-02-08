@@ -2,6 +2,8 @@
   "extends": "next/core-web-vitals",
   "ignorePatterns": [
     "node_modules/*",
-    "next.config.js"
+    "next.config.js",
+    "next-env.d.ts",
+    ".lintstagedrc.js"
   ]
 }
