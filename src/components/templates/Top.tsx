@@ -74,7 +74,7 @@ const TopTemplate = ({ modalName }: Props) => {
       </TabletModal>
       <TabletModal open={open === 'sample3'} handleClose={handleClose}>
         <h3>モーダルサンプル3</h3>
-        これがサンプル3sです
+        これがサンプル3です
       </TabletModal>
     </>
   );
