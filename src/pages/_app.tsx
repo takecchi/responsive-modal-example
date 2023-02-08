@@ -1,5 +1,11 @@
+import { ThemeProvider } from '@mui/material/styles';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { theme } from '@/theme';
+import { CacheProvider } from '@emotion/react';
+import createCache from '@emotion/cache';
+
+const emotionCache = createCache({ key: 'css' });
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -10,7 +16,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
     </>
   );
 }

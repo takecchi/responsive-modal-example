@@ -19,9 +19,9 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const Modal = ({ open, handleClose, children }: Props) => {
+const Modal = ({ open, handleClose, className, children }: Props) => {
   return (
-    <MuiModal open={open} onClose={handleClose}>
+    <MuiModal open={open} onClose={handleClose} className={className}>
       <StyledBox>{children}</StyledBox>
     </MuiModal>
   );

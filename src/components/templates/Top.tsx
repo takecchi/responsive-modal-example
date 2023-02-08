@@ -1,7 +1,22 @@
-import { Button } from '@mui/material';
+import { Button, styled } from '@mui/material';
 import Modal from '@/components/parts/Modal';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import sample1 from '@/pages/modal/sample1';
+
+// Mobileのみ表示させるdiv
+const Mobile = styled('div')`
+  ${({ theme }) => theme.breakpoints.up('tablet')} {
+    display: none;
+  }
+`;
+
+// Tabletにのみ表示させるモーダル
+const TabletModal = styled(Modal)`
+  ${({ theme }) => theme.breakpoints.down('tablet')} {
+    display: none;
+  }
+`;
 
 type Props = {
   modalName?: 'sample1' | 'sample2' | 'sample3';
@@ -45,18 +60,22 @@ const TopTemplate = ({ modalName }: Props) => {
         モーダル3を開く
       </Button>
 
-      <Modal open={open === 'sample1'} handleClose={handleClose}>
+      <Mobile>
+        <div>モバイル表示中</div>
+        <div>現在の表示中のモーダル:{open ?? 'なし'}</div>
+      </Mobile>
+      <TabletModal open={open === 'sample1'} handleClose={handleClose}>
         <h3>モーダルサンプル1</h3>
-        これがサンプルです
-      </Modal>
-      <Modal open={open === 'sample2'} handleClose={handleClose}>
+        これがサンプル1です
+      </TabletModal>
+      <TabletModal open={open === 'sample2'} handleClose={handleClose}>
         <h3>モーダルサンプル2</h3>
-        これがサンプルです
-      </Modal>
-      <Modal open={open === 'sample3'} handleClose={handleClose}>
+        これがサンプル2です
+      </TabletModal>
+      <TabletModal open={open === 'sample3'} handleClose={handleClose}>
         <h3>モーダルサンプル3</h3>
-        これがサンプルです
-      </Modal>
+        これがサンプル3sです
+      </TabletModal>
     </>
   );
 };
