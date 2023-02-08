@@ -4,7 +4,7 @@ import TopTemplate from '@/components/templates/Top';
 const ModalPage: NextPage = () => {
   return (
     <main>
-      <TopTemplate modalOpen={true} />
+      <TopTemplate modalName={'sample3'} />
     </main>
   );
 };

@@ -4,28 +4,57 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 
 type Props = {
-  modalOpen: boolean;
+  modalName?: 'sample1' | 'sample2' | 'sample3';
 };
 
-const TopTemplate = ({ modalOpen }: Props) => {
+const TopTemplate = ({ modalName }: Props) => {
   const router = useRouter();
-  const [open, setOpen] = useState<boolean>(modalOpen);
+  const [open, setOpen] = useState(modalName);
 
-  const handleOpen = async () => {
-    setOpen(true);
-    await router.push('/', '/modal/sample', { shallow: true });
+  const handleOpen = async (name: 'sample1' | 'sample2' | 'sample3') => {
+    setOpen(name);
+    await router.push('/', `/modal/${name}`, { shallow: true });
   };
   const handleClose = async () => {
-    setOpen(false);
+    setOpen(undefined);
     await router.push('/', '/', { shallow: true });
   };
 
   return (
     <>
       <h1>モーダル+url+レスポンシブサンプル</h1>
-      <Button onClick={handleOpen}>モーダルを開く</Button>
-      <Modal open={open} handleClose={handleClose}>
-        <h3>モーダルサンプル</h3>
+      <Button
+        onClick={async () => {
+          await handleOpen('sample1');
+        }}
+      >
+        モーダル1を開く
+      </Button>
+      <Button
+        onClick={async () => {
+          await handleOpen('sample2');
+        }}
+      >
+        モーダル2を開く
+      </Button>
+      <Button
+        onClick={async () => {
+          await handleOpen('sample3');
+        }}
+      >
+        モーダル3を開く
+      </Button>
+
+      <Modal open={open === 'sample1'} handleClose={handleClose}>
+        <h3>モーダルサンプル1</h3>
+        これがサンプルです
+      </Modal>
+      <Modal open={open === 'sample2'} handleClose={handleClose}>
+        <h3>モーダルサンプル2</h3>
+        これがサンプルです
+      </Modal>
+      <Modal open={open === 'sample3'} handleClose={handleClose}>
+        <h3>モーダルサンプル3</h3>
         これがサンプルです
       </Modal>
     </>
