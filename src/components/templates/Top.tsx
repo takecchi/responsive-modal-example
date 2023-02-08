@@ -23,7 +23,7 @@ const TopTemplate = ({ modalOpen }: Props) => {
   return (
     <>
       <h1>モーダル+url+レスポンシブサンプル</h1>
-      <Button onClick={handleOpen}>モーダルを開く</Button>;
+      <Button onClick={handleOpen}>モーダルを開く</Button>
       <Modal open={open} handleClose={handleClose}>
         <h3>モーダルサンプル</h3>
         これがサンプルです
