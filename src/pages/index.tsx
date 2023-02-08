@@ -2,11 +2,21 @@ import Head from 'next/head';
 import { Button } from '@mui/material';
 import { useState } from 'react';
 import Modal from '@/components/Modal';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const router = useRouter();
+
+  const handleOpen = async () => {
+    setOpen(true);
+    await router.push('/', '/modal', { shallow: true });
+  };
+  const handleClose = async () => {
+    setOpen(false);
+    await router.push('/', '/', { shallow: true });
+  };
+
   return (
     <>
       <Head>
