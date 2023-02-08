@@ -31,7 +31,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>モーダル名:{router.query.modalName}</div>
         <h1>モーダル+url+レスポンシブサンプル</h1>
         <Button onClick={handleOpen}>モーダルを開く</Button>
         <Modal open={open} handleClose={handleClose}>
