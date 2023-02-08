@@ -10,7 +10,7 @@ export default function Home() {
 
   const handleOpen = async () => {
     setOpen(true);
-    await router.push('/', '/modal', { shallow: true });
+    await router.push('/', '/modal/sample', { shallow: true });
   };
   const handleClose = async () => {
     setOpen(false);
