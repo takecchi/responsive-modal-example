@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import { Button } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Modal from '@/components/Modal';
 import { useRouter } from 'next/router';
 
 export default function Home() {
-  const [open, setOpen] = useState<boolean>(false);
   const router = useRouter();
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleOpen = async () => {
     setOpen(true);
@@ -16,6 +16,11 @@ export default function Home() {
     setOpen(false);
     await router.push('/', '/', { shallow: true });
   };
+  useEffect(() => {
+    if (!!router.query.modalName) {
+      handleOpen();
+    }
+  }, []);
 
   return (
     <>
@@ -26,6 +31,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <div>モーダル名:{router.query.modalName}</div>
         <h1>モーダル+url+レスポンシブサンプル</h1>
         <Button onClick={handleOpen}>モーダルを開く</Button>
         <Modal open={open} handleClose={handleClose}>
