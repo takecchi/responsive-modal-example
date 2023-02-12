@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import TopTemplate from '@/components/templates/Top';
+import TopTemplate from '@/features/Top/Top';
 
 const ModalPage: NextPage = () => {
   return (
