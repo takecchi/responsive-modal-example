@@ -26,11 +26,11 @@ export const Sample1 = ({ open, handleClose }: Props) => {
     <>
       <Mobile hidden={!open}>
         <h3>モーダルサンプル1</h3>
-        これがサンプル1です
+        これがサンプル1です(SP表示)
       </Mobile>
       <TabletModal open={open} handleClose={handleClose}>
         <h3>モーダルサンプル1</h3>
-        これがサンプル1です
+        これがサンプル1です(PC表示)
       </TabletModal>
     </>
   );
@@ -41,11 +41,11 @@ export const Sample2 = ({ open, handleClose }: Props) => {
     <>
       <Mobile hidden={!open}>
         <h3>モーダルサンプル2</h3>
-        これがサンプル2です
+        これがサンプル2です(SP表示)
       </Mobile>
       <TabletModal open={open} handleClose={handleClose}>
         <h3>モーダルサンプル2</h3>
-        これがサンプル2です
+        これがサンプル2です(PC表示)
       </TabletModal>
     </>
   );
@@ -56,11 +56,11 @@ export const Sample3 = ({ open, handleClose }: Props) => {
     <>
       <Mobile hidden={!open}>
         <h3>モーダルサンプル3</h3>
-        これがサンプル3です
+        これがサンプル3です(SP表示)
       </Mobile>
       <TabletModal open={open} handleClose={handleClose}>
         <h3>モーダルサンプル3</h3>
-        これがサンプル3です
+        これがサンプル3です(PC表示)
       </TabletModal>
     </>
   );

@@ -1,18 +1,9 @@
-import { GetStaticProps, NextPage, PageProps } from 'next';
+import { NextPageWithLayout } from 'next';
 import TopTemplate from '@/features/Top/Top';
+import Layout from '@/components/layouts/Layout';
 
-export const getStaticProps: GetStaticProps<PageProps> = () => {
-  const props: PageProps = {
-    withModal: true,
-  };
-  return { props };
-};
+const ModalPage: NextPageWithLayout = () => <TopTemplate />;
 
-const ModalPage: NextPage = () => {
-  return (
-    <main>
-      <TopTemplate />
-    </main>
-  );
-};
+ModalPage.getLayout = (page) => <Layout to="/">{page}</Layout>;
+
 export default ModalPage;

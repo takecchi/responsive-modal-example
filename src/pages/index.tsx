@@ -1,9 +1,9 @@
 import TopTemplate from '@/features/Top/Top';
+import { NextPageWithLayout } from 'next';
+import Layout from '@/components/layouts/Layout';
 
-export default function Home() {
-  return (
-    <main>
-      <TopTemplate />
-    </main>
-  );
-}
+const TopPage: NextPageWithLayout = () => <TopTemplate />;
+
+TopPage.getLayout = (page) => <Layout>{page}</Layout>;
+
+export default TopPage;
