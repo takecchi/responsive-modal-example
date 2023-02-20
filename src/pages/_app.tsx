@@ -1,13 +1,12 @@
 import { ThemeProvider } from '@mui/material/styles';
-import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { theme } from '@/theme';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createCache from '@emotion/cache';
+import { AppPropsWithLayout } from 'next/app';
 import { PageProps } from 'next';
-import ModalProvider from '@/providers/ModalProvider';
 
-type MyAppProps = Omit<AppProps<PageProps>, 'pageProps'> & {
+type MyAppProps = Omit<AppPropsWithLayout<PageProps>, 'pageProps'> & {
   emotionCache?: EmotionCache;
   pageProps: PageProps;
 };
@@ -17,6 +16,8 @@ export default function App({
   pageProps,
   emotionCache = createCache({ key: 'css' }),
 }: MyAppProps) {
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <>
       <Head>
@@ -27,9 +28,7 @@ export default function App({
       </Head>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <ModalProvider withModal={pageProps.withModal}>
-            <Component {...pageProps} />
-          </ModalProvider>
+          {getLayout(<Component {...pageProps} />)}
         </ThemeProvider>
       </CacheProvider>
     </>
